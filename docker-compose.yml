@@ -3,6 +3,9 @@ services:
   web:
     build: .
     command: python /code/manage.py runserver 0.0.0.0:8000
+    environment:
+      - SECRET_KEY=django-insecure-bj7v*1tc7+wc#p=v1d@=x4sr3%p+y^^jznf^p*4+*xfb3k!phy 
+      - DEBUG=1
     volumes:
     - .:/code
     ports:
@@ -12,10 +15,10 @@ services:
   db:
     image: postgres:14
     environment:
+  
       - POSTGRES_PASSWORD=postgres
     volumes:
-    - SECRET_KEY=django-insecure-bj7v*1tc7+wc#p=v1d@=x4sr3%p+y^^jznf^p*4+*xfb3k!phy 
-    - DEBUG=1
+    
     - postgres_data:/var/lib/postgresql/data/
 volumes:
   postgres_data:
